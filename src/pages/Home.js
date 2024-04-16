@@ -4,27 +4,28 @@ import MovieCard from "../components/MovieCard";
 
 
 function Home() {
+
   const [movies, setMovies] = useState([])
-  
+
   useEffect(() => {
-    fetch('http://localhost:4000/movies')
+    fetch("http://localhost:4000/movies")
     .then(res => res.json())
     .then(data => setMovies(data))
-    .catch(error => console.error(error))
   }, [])
 
-  const moviesArr = movies.map((movie) => {
-    return <MovieCard key={movie.id} movie={movie} />
+  const mappedMovies = movies.map( movie => {
+    return(<MovieCard movies={movies} movie={movie} setMovies={setMovies}/>)
   })
+
 
   return (
     <>
       <header>
         <NavBar />
+        <h1>Home Page</h1>
       </header>
       <main>
-        <h1>Home Page</h1>
-        {moviesArr}
+        {mappedMovies}
       </main>
     </>
   );

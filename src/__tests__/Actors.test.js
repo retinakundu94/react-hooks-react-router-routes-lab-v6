@@ -62,8 +62,8 @@ test("renders a <li /> for each movie", async () => {
   for (const actor of actors) {
     for (const movie of actor.movies) {
       const li = await screen.findByText(movie, { exact: false });
-            expect(li).toBeInTheDocument();
-            expect(li.tagName).toBe("LI");
+      expect(li).toBeInTheDocument();
+      expect(li.tagName).toBe("LI");
     }
   }
 });

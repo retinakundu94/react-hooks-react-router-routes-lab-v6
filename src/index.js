@@ -1,30 +1,15 @@
-import Directors from './pages/Directors';
-import Actors from './pages/Actors';
-import Movie from './pages/Movie';
-import Home from './pages/Home';
-import ErrorPage from './pages/ErrorPage';
+import React from 'react'
+import "./index.css";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import routes from "./routes";
 
-const routes = [
-  {
-    path: '/directors',
-    element: <Directors />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: '/actors',
-    element: <Actors />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: '/movie/:id',
-    element: <Movie />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: '/',
-    element: <Home />,
-    errorElement: <ErrorPage />
-}
-  ];
+const router = createBrowserRouter(routes)
 
-export default routes;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+    <React.StrictMode>
+        <RouterProvider router={router} />
+    </React.StrictMode>
+);
